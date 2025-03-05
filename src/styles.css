@@ -1,1 +1,52 @@
-/* You can add global styles to this file, and also import other style files */
+*,
+*::before,
+*::after {
+  margin: 0;
+}
+
+/* Change the highlight color for selected text */
+::selection {
+  background-color: #ff6347;
+  color: white; /
+}
+
+/* Global font styles */
+body {
+  font-family: 'Arial', sans-serif; 
+  font-size: 16px;
+  line-height: 1.5; 
+  color: #333; 
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Helvetica', sans-serif; 
+  font-weight: bold; 
+  color: #222;
+}
+
+/* Paragraphs */
+p {
+  font-family: 'Georgia', serif; 
+  font-size: 1rem;
+  color: #555; 
+}
+
+header nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+header nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+header nav ul li a:hover {
+  text-decoration: underline;
+}
