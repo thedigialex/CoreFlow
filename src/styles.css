@@ -7,7 +7,7 @@
 /* Change the highlight color for selected text */
 ::selection {
   background-color: #ff6347;
-  color: white; /
+  color: white; 
 }
 
 /* Global font styles */
