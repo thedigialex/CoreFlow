@@ -1,5 +1,15 @@
+
 .header {
-  background-color: #4CAF50;
   padding: 20px;
   text-align: center;
+}
+
+.header-green {
+  background-color: green;
+  color: white;
+}
+
+.header-blue {
+  background-color: blue;
+  color: white;
 }

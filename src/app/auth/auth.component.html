@@ -30,7 +30,8 @@
     <button type="submit" [disabled]="!username || !password">
       Login
     </button>
-
-    <p *ngIf="errorMessage">{{ errorMessage }}</p>
   </form>
+
+  <!-- Logout Button (only visible if user is logged in) -->
+  <button *ngIf="isUserLoggedIn" (click)="onLogout()">Logout</button>
 </div>

@@ -1,27 +1,33 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs'; // Import BehaviorSubject
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private isAuthenticated = false;
+  private userSubject = new BehaviorSubject<any>(null); // Create a BehaviorSubject to track user state
 
-  login(username: string, password: string): boolean {
-    // This is a mock login. In the future, replace with API call
-    if (username === 'admin' && password === 'password') {
-      this.isAuthenticated = true;
-      localStorage.setItem('user', JSON.stringify({ username }));
-      return true;
+  constructor() {
+    const storedUser = sessionStorage.getItem('user');
+    if (storedUser) {
+      this.userSubject.next(JSON.parse(storedUser)); // If user is stored in sessionStorage, set it
     }
-    return false;
   }
 
-  logout(): void {
-    this.isAuthenticated = false;
-    localStorage.removeItem('user');
+  // Method to set the user and update the BehaviorSubject
+  setUser(user: any) {
+    this.userSubject.next(user); // Update the BehaviorSubject with new user data
+    sessionStorage.setItem('user', JSON.stringify(user)); // Store user data in sessionStorage
   }
 
-  isLoggedIn(): boolean {
-    return this.isAuthenticated || localStorage.getItem('user') !== null;
+  // Method to clear the user and update the BehaviorSubject
+  clearUser() {
+    this.userSubject.next(null); // Set the BehaviorSubject to null
+    sessionStorage.removeItem('user'); // Remove user from sessionStorage
+  }
+
+  // Observable to allow components to subscribe and react to user state changes
+  getUser() {
+    return this.userSubject.asObservable(); // Return the observable to be subscribed to
   }
 }
