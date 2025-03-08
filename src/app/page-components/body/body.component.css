@@ -5,3 +5,17 @@ p{
   padding: 32px;
   margin: 32px;;
 }
+
+
+/* Row layout: Flexbox with horizontal alignment */
+.row {
+  display: flex; /* Aligns children horizontally */
+  gap: 15px; /* Add space between content items */
+}
+
+/* Column layout: Flexbox with vertical alignment */
+.column {
+  display: flex; /* Aligns children vertically */
+  flex-direction: column; /* Stack children vertically */
+  gap: 15px; /* Add space between content items */
+}
