@@ -1,13 +1,10 @@
+/* Sticky Header */
 .body {
-  padding: 20px;
+  margin-top: 100px; 
 }
-p{
-  padding: 32px;
-  margin: 32px;;
-}
+/* Sticky Header */
 
-
-/* Row layout: Flexbox with horizontal alignment */
+/* Layout alignment */
 .row {
   display: flex; /* Aligns children horizontally */
   gap: 15px; /* Add space between content items */
@@ -19,3 +16,70 @@ p{
   flex-direction: column; /* Stack children vertically */
   gap: 15px; /* Add space between content items */
 }
+/* Layout alignment */
+
+/* Content alignment Stylings */
+.alignment {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  height: 100%;
+}
+
+.top-left {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.top-center {
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.top-right {
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.middle-left {
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.middle-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.middle-right {
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.bottom-left {
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.bottom-center {
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.bottom-right {
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+/* Content alignment Stylings */
+
+/* Page Width Stylings */
+.page-width {
+  max-width: 1200px; /* Adjust based on user design */
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+
+.full-width {
+  width: 100%;
+}
+/* Page Width Stylings */

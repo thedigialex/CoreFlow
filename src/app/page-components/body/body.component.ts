@@ -3,8 +3,6 @@ import { RouterModule, ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 
-
-
 interface Page {
   name: string;
   route: string;
@@ -12,12 +10,17 @@ interface Page {
 }
 interface Section {
   flex: string; // 'row' or 'column'
+  width: 'full' | 'page'; // 'full' = 100% width, 'page' = global page width
   content: Content[];
 }
 interface Content {
   type: string; // 'p', 'h1', 'h2', 'button', etc.
   content: string;
+  align: 'top-left' | 'top-center' | 'top-right' | 
+         'middle-left' | 'middle-center' | 'middle-right' | 
+         'bottom-left' | 'bottom-center' | 'bottom-right';
 }
+
 @Component({
   selector: 'app-body',
   standalone: true,
@@ -33,42 +36,169 @@ export class BodyComponent {
       sections: [
         {
           flex: 'row',
+          width: 'full',
           content: [
-            { type: 'h1', content: 'Welcome to Angular!' },
-            { type: 'p', content: 'This is the home page.' },
+            { type: 'h1', content: 'Welcome to Angular!', align: 'top-left' },
+            { type: 'p', content: 'This is the home page.', align: 'middle-center' },
           ],
         },
         {
           flex: 'row',
+          width: 'page',
           content: [
-            { type: 'h2', content: 'Our Services' },
-            { type: 'p', content: 'We offer a variety of services for your needs.' },
-            { type: 'button', content: 'Learn More' },
-          ],
-        },
-      ],
-    },
-    {
-      name: 'Support',
-      route: 'support',
-      sections: [
-        {
-          flex: 'column',
-          content: [
-            { type: 'h1', content: 'Support Center' },
-            { type: 'p', content: 'We are here to help you.' },
+            { type: 'h2', content: 'Our Services', align: 'top-center' },
+            { type: 'p', content: 'We offer a variety of services.', align: 'bottom-left' },
+            { type: 'button', content: 'Learn More', align: 'bottom-right' },
           ],
         },
         {
           flex: 'row',
+          width: 'page',
           content: [
-            { type: 'h2', content: 'Contact Us' },
-            { type: 'p', content: 'Please reach out via email or phone.' },
+            { type: 'h2', content: 'Our Services', align: 'top-center' },
+            { type: 'p', content: 'We offer a variety of services.', align: 'bottom-left' },
+            { type: 'button', content: 'Learn More', align: 'bottom-right' },
+          ],
+        },
+        {
+          flex: 'row',
+          width: 'page',
+          content: [
+            { type: 'h2', content: 'Our Services', align: 'top-center' },
+            { type: 'p', content: 'We offer a variety of services.', align: 'bottom-left' },
+            { type: 'button', content: 'Learn More', align: 'bottom-right' },
+          ],
+        },
+        {
+          flex: 'row',
+          width: 'page',
+          content: [
+            { type: 'h2', content: 'Our Services', align: 'top-center' },
+            { type: 'p', content: 'We offer a variety of services.', align: 'bottom-left' },
+            { type: 'button', content: 'Learn More', align: 'bottom-right' },
+          ],
+        },
+        {
+          flex: 'row',
+          width: 'page',
+          content: [
+            { type: 'h2', content: 'Our Services', align: 'top-center' },
+            { type: 'p', content: 'We offer a variety of services.', align: 'bottom-left' },
+            { type: 'button', content: 'Learn More', align: 'bottom-right' },
+          ],
+        },
+        {
+          flex: 'row',
+          width: 'page',
+          content: [
+            { type: 'h2', content: 'Our Services', align: 'top-center' },
+            { type: 'p', content: 'We offer a variety of services.', align: 'bottom-left' },
+            { type: 'button', content: 'Learn More', align: 'bottom-right' },
+          ],
+        },
+        {
+          flex: 'row',
+          width: 'page',
+          content: [
+            { type: 'h2', content: 'Our Services', align: 'top-center' },
+            { type: 'p', content: 'We offer a variety of services.', align: 'bottom-left' },
+            { type: 'button', content: 'Learn More', align: 'bottom-right' },
+          ],
+        },
+        {
+          flex: 'row',
+          width: 'page',
+          content: [
+            { type: 'h2', content: 'Our Services', align: 'top-center' },
+            { type: 'p', content: 'We offer a variety of services.', align: 'bottom-left' },
+            { type: 'button', content: 'Learn More', align: 'bottom-right' },
+          ],
+        },
+        {
+          flex: 'row',
+          width: 'page',
+          content: [
+            { type: 'h2', content: 'Our Services', align: 'top-center' },
+            { type: 'p', content: 'We offer a variety of services.', align: 'bottom-left' },
+            { type: 'button', content: 'Learn More', align: 'bottom-right' },
+          ],
+        },
+        {
+          flex: 'row',
+          width: 'page',
+          content: [
+            { type: 'h2', content: 'Our Services', align: 'top-center' },
+            { type: 'p', content: 'We offer a variety of services.', align: 'bottom-left' },
+            { type: 'button', content: 'Learn More', align: 'bottom-right' },
+          ],
+        },
+        {
+          flex: 'row',
+          width: 'page',
+          content: [
+            { type: 'h2', content: 'Our Services', align: 'top-center' },
+            { type: 'p', content: 'We offer a variety of services.', align: 'bottom-left' },
+            { type: 'button', content: 'Learn More', align: 'bottom-right' },
+          ],
+        },
+        {
+          flex: 'row',
+          width: 'page',
+          content: [
+            { type: 'h2', content: 'Our Services', align: 'top-center' },
+            { type: 'p', content: 'We offer a variety of services.', align: 'bottom-left' },
+            { type: 'button', content: 'Learn More', align: 'bottom-right' },
+          ],
+        },
+        {
+          flex: 'row',
+          width: 'page',
+          content: [
+            { type: 'h2', content: 'Our Services', align: 'top-center' },
+            { type: 'p', content: 'We offer a variety of services.', align: 'bottom-left' },
+            { type: 'button', content: 'Learn More', align: 'bottom-right' },
+          ],
+        },
+        {
+          flex: 'row',
+          width: 'page',
+          content: [
+            { type: 'h2', content: 'Our Services', align: 'top-center' },
+            { type: 'p', content: 'We offer a variety of services.', align: 'bottom-left' },
+            { type: 'button', content: 'Learn More', align: 'bottom-right' },
+          ],
+        },
+        {
+          flex: 'row',
+          width: 'page',
+          content: [
+            { type: 'h2', content: 'Our Services', align: 'top-center' },
+            { type: 'p', content: 'We offer a variety of services.', align: 'bottom-left' },
+            { type: 'button', content: 'Learn More', align: 'bottom-right' },
+          ],
+        },
+        {
+          flex: 'row',
+          width: 'page',
+          content: [
+            { type: 'h2', content: 'Our Services', align: 'top-center' },
+            { type: 'p', content: 'We offer a variety of services.', align: 'bottom-left' },
+            { type: 'button', content: 'Learn More', align: 'bottom-right' },
+          ],
+        },
+        {
+          flex: 'row',
+          width: 'page',
+          content: [
+            { type: 'h2', content: 'Our Services', align: 'top-center' },
+            { type: 'p', content: 'We offer a variety of services.', align: 'bottom-left' },
+            { type: 'button', content: 'Learn More', align: 'bottom-right' },
           ],
         },
       ],
-    },
+    }
   ];
+  
 
   activePage: Page | undefined;
 
@@ -82,6 +212,11 @@ export class BodyComponent {
   // Method to set the active page based on the current route
   setActivePage(): void {
     const currentRoute = this.route.snapshot.firstChild?.routeConfig?.path || ''; // Default to '' (home)
-    this.activePage = this.pages[0];
+    this.activePage = this.pages[0]; // update later
   }
+
+  getAlignmentClass(align: string): string {
+    return `alignment ${align}`;
+  }
+  
 }

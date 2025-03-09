@@ -1,27 +1,24 @@
-<section class="body">
-  <h2 *ngIf="activePage">{{ activePage.name }}</h2>
-
-  <div *ngIf="activePage">
-    <div *ngFor="let section of activePage.sections">
-
-      <div [ngClass]="{'row': section.flex == 'row', 'column': section.flex == 'column'}">
-        <div *ngFor="let content of section.content">
-          <div *ngIf="content.type === 'p'">
-            <p>{{ content.content }}</p>
-          </div>
-          <div *ngIf="content.type === 'h1'">
-            <h1>{{ content.content }}</h1>
-          </div>
-          <div *ngIf="content.type === 'h2'">
-            <h2>{{ content.content }}</h2>
-          </div>
-          <div *ngIf="content.type === 'button'">
-            <button>{{ content.content }}</button>
-          </div>
-        </div>
+<div *ngIf="activePage" class="body">
+  <div *ngFor="let section of activePage.sections" 
+       [ngClass]="{'row': section.flex === 'row', 'column': section.flex === 'column', 
+                   'full-width': section.width === 'full', 'page-width': section.width === 'page'}">
+    
+    <div *ngFor="let content of section.content" 
+         [ngStyle]="{'width': (100 / section.content.length) + '%'}"
+         [ngClass]="getAlignmentClass(content.align)">
+      <div *ngIf="content.type === 'p'">
+        <p>{{ content.content }}</p>
+      </div>
+      <div *ngIf="content.type === 'h1'">
+        <h1>{{ content.content }}</h1>
+      </div>
+      <div *ngIf="content.type === 'h2'">
+        <h2>{{ content.content }}</h2>
+      </div>
+      <div *ngIf="content.type === 'button'">
+        <button>{{ content.content }}</button>
       </div>
     </div>
-  </div>
 
-  <router-outlet></router-outlet>
-</section>
+  </div>
+</div>
