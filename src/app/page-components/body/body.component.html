@@ -1,4 +1,5 @@
-<div *ngIf="activePage" class="body">
+<router-outlet *ngIf="staticPage"></router-outlet> 
+<div *ngIf="activePage && !staticPage" class="body">
   <div *ngFor="let section of activePage.sections" 
        [ngClass]="{'row': section.flex === 'row', 'column': section.flex === 'column', 
                    'full-width': section.width === 'full', 'page-width': section.width === 'page'}">

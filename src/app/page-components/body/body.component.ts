@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { RouterModule, ActivatedRoute } from '@angular/router';
+import { RouterModule, ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
+import { routes } from '../../../app/app.routes';
+import { filter } from 'rxjs';
 
 interface Page {
   name: string;
@@ -16,19 +17,19 @@ interface Section {
 interface Content {
   type: string; // 'p', 'h1', 'h2', 'button', etc.
   content: string;
-  align: 'top-left' | 'top-center' | 'top-right' | 
-         'middle-left' | 'middle-center' | 'middle-right' | 
-         'bottom-left' | 'bottom-center' | 'bottom-right';
+  align: 'top-left' | 'top-center' | 'top-right' |
+  'middle-left' | 'middle-center' | 'middle-right' |
+  'bottom-left' | 'bottom-center' | 'bottom-right';
 }
 
 @Component({
   selector: 'app-body',
-  standalone: true,
   imports: [RouterModule, CommonModule],
   templateUrl: './body.component.html',
   styleUrls: ['./body.component.css'],
 })
 export class BodyComponent {
+  staticPage: boolean = false;
   pages: Page[] = [
     {
       name: 'Home',
@@ -198,25 +199,28 @@ export class BodyComponent {
       ],
     }
   ];
-  
 
   activePage: Page | undefined;
 
-  constructor(private route: ActivatedRoute) {
-    // Listen for route changes to update the active page
-    this.route.url.subscribe(() => {
+  constructor(private router: Router) {
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
       this.setActivePage();
     });
   }
 
-  // Method to set the active page based on the current route
   setActivePage(): void {
-    const currentRoute = this.route.snapshot.firstChild?.routeConfig?.path || ''; // Default to '' (home)
-    this.activePage = this.pages[0]; // update later
+    const currentRoute = this.router.url.split('/')[1] || '';
+
+    const staticRoutes = routes.map(route => route.path); 
+    this.staticPage = staticRoutes.includes(currentRoute);
+
+    this.staticPage = staticRoutes.includes(currentRoute);
+    if (!this.staticPage) {
+      this.activePage = this.pages.find(page => page.route === currentRoute) || this.pages[0]; 
+    }
   }
 
   getAlignmentClass(align: string): string {
     return `alignment ${align}`;
   }
-  
 }

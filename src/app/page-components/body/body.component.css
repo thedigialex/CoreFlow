@@ -1,8 +1,6 @@
-/* Sticky Header */
-.body {
-  margin-top: 100px; 
-}
-/* Sticky Header */
+/* Page-Styles */
+@import '../../page-styles.css'; 
+/* Page-Styles */
 
 /* Layout alignment */
 .row {
