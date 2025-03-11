@@ -8,7 +8,7 @@ app-header {
   flex-shrink: 0;
 }
 
-app-body {
+.app-body {
   flex-grow: 1;
   background-color: #f4f4f4;
   overflow-y: auto;

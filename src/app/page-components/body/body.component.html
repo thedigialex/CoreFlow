@@ -1,6 +1,5 @@
-<router-outlet *ngIf="staticPage"></router-outlet> 
-<div *ngIf="activePage && !staticPage" class="body">
-  <div *ngFor="let section of activePage.sections" 
+<div *ngIf="page" class="body">
+  <div *ngFor="let section of page.sections" 
        [ngClass]="{'row': section.flex === 'row', 'column': section.flex === 'column', 
                    'full-width': section.width === 'full', 'page-width': section.width === 'page'}">
     
@@ -20,6 +19,5 @@
         <button>{{ content.content }}</button>
       </div>
     </div>
-
   </div>
 </div>

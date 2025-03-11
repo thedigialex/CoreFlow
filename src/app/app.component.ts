@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth/auth.service';
 import { User, UserRole } from './auth/auth.models';
 import { HeaderComponent } from './page-components/header/header.component';
-import { BodyComponent } from './page-components/body/body.component';
 import { FooterComponent } from './page-components/footer/footer.component';
 import { Subject, takeUntil } from 'rxjs';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,20 +12,20 @@ import { Subject, takeUntil } from 'rxjs';
   styleUrls: ['./app.component.css'],
   imports: [
     HeaderComponent,
-    BodyComponent,
-    FooterComponent
+    FooterComponent,
+    RouterModule
   ]
 })
 export class AppComponent implements OnInit {
   title = 'CoreFlow';
   isViewer: boolean = false;
-  private destroy$ = new Subject<void>(); // Helps with unsubscribing
+  private destroy$ = new Subject<void>();
 
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
     this.authService.getUser()
-      .pipe(takeUntil(this.destroy$)) // Automatically unsubscribes on destroy
+      .pipe(takeUntil(this.destroy$))
       .subscribe(user => {
         this.isViewer = user?.role === UserRole.Viewer;
       });
@@ -33,6 +33,6 @@ export class AppComponent implements OnInit {
 
   ngOnDestroy() {
     this.destroy$.next();
-    this.destroy$.complete(); // Ensures no memory leaks
+    this.destroy$.complete();
   }
 }
