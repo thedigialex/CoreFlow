@@ -73,6 +73,11 @@ export class PageService {
         }
     ];
 
+    getPageRoutes(): Observable<string[]> {
+        const routes = this.pages.map(page => page.route);
+        return of(routes);
+      }
+
     getPageByRoute(route: string): Observable<Page | undefined> {
         return of(this.pages.find(page => page.route === route));
     }

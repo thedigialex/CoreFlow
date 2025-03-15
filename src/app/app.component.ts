@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './auth/auth.service';
-import { User, UserRole } from './auth/auth.models';
+import { AuthService } from './pages/auth/auth.service';
+import { User, UserRole } from './pages/auth/auth.models';
 import { HeaderComponent } from './page-components/header/header.component';
 import { FooterComponent } from './page-components/footer/footer.component';
 import { Subject, takeUntil } from 'rxjs';

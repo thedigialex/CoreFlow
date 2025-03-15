@@ -1,30 +1,41 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AuthService } from '../../auth/auth.service'; // Import AuthService
-import { Subscription } from 'rxjs'; // Import Subscription
-import { CommonModule  } from '@angular/common';
+import { AuthService } from '../../pages/auth/auth.service';
+import { PageService } from '../../pages/page.service';
+import { Subscription } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  isUserLoggedIn = false; // Flag to store user login status
-  private userSubscription: Subscription | null = null;
 
-  constructor(private authService: AuthService) {}
+  private subscriptions: Subscription[] = [];
+  isUserLoggedIn = false;
+  pageRoutes: string[] = [];
+
+  constructor(private authService: AuthService, private pageService: PageService) { }
 
   ngOnInit() {
-    // Subscribe to the AuthService to track user state changes
-    this.userSubscription = this.authService.getUser().subscribe(user => {
-      this.isUserLoggedIn = user !== null; // Update isUserLoggedIn when the user data changes
-    });
+    this.subscriptions.push(
+      this.authService.getUser().subscribe(user => {
+        this.isUserLoggedIn = user !== null;
+      })
+    );
+    this.subscriptions.push(
+      this.pageService.getPageRoutes().subscribe(routes => {
+        this.pageRoutes = routes;
+        this.pageRoutes.push("login"); // Add static pages if needed
+        console.log(this.pageRoutes);
+      })
+    );
   }
 
+
   ngOnDestroy() {
-    // Unsubscribe when the component is destroyed to avoid memory leaks
-    if (this.userSubscription) {
-      this.userSubscription.unsubscribe();
-    }
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 }

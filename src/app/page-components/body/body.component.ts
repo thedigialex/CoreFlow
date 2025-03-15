@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Page } from './body.modals';
 
@@ -12,11 +12,14 @@ import { Page } from './body.modals';
 export class BodyComponent implements OnInit {
   page: Page | undefined;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     this.route.data.subscribe(data => {
       this.page = data['page'];
+      if (!this.page) {
+        this.router.navigate(['/not-found']);
+      }
     });
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from '../auth/auth.service'; // Import AuthService
+import { AuthService } from '../pages/auth/auth.service'; // Import AuthService
 import { CommonModule } from '@angular/common';
 @Component({
   selector: 'editor',
