@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { AuthComponent } from './pages/auth/auth.component';
-import { NotFoundComponent } from './pages/404/404.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { BodyComponent } from '../app/page-components/body/body.component';
 import { PageResolver } from './pages/page-resolver';
 
