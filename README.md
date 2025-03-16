@@ -1,8 +1,10 @@
 # CoreFlow
 
+CoreFlow is a simple content management system (CMS) designed to provide a foundation for a flexible website-building tool. The goal of this project is to allow admin and editor-level users to customize page content and manage routes easily.
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
 
-## Development server
+## Development Server
 
 To start a local development server, run:
 
@@ -12,7 +14,7 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+## Code Scaffolding
 
 Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
@@ -28,7 +30,7 @@ ng generate --help
 
 ## Building
 
-To build the project run:
+To build the project, run:
 
 ```bash
 ng build
@@ -36,24 +38,10 @@ ng build
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+

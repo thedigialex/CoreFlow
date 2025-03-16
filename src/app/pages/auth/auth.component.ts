@@ -21,7 +21,7 @@ export class AuthComponent implements OnInit {
 
   ngOnInit() {
     this.authService.getUser().subscribe(user => {
-      this.isUserLoggedIn = user !== null;
+      this.isUserLoggedIn = user != null;
       this.userRole = user ? user.role : null;
     });
   }
@@ -34,7 +34,7 @@ export class AuthComponent implements OnInit {
     sessionStorage.setItem('user', JSON.stringify(fakeUserData));
     this.authService.setUser(fakeUserData);
 
-    console.log('Login successful');
+    console.log('Login successful', fakeUserData);
   }
 
   generateFakeUserData(): User {

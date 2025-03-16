@@ -6,6 +6,6 @@ import { PageResolver } from './pages/page-resolver';
 
 export const routes: Routes = [
   { path: 'login', component: AuthComponent }, //Static pages
-  { path: 'not-found', component: NotFoundComponent }, //Static pages
+  { path: 'not-found', component: NotFoundComponent },
   { path: ':pageRoute', component: BodyComponent, resolve: { page: PageResolver } }, //Dynamic pages
 ];

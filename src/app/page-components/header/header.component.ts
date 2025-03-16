@@ -4,6 +4,7 @@ import { PageService } from '../../pages/page.service';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { User } from '../../pages/auth/auth.models';
 
 @Component({
   selector: 'app-header',
@@ -19,16 +20,20 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(private authService: AuthService, private pageService: PageService) { }
 
+
   ngOnInit() {
     this.subscriptions.push(
       this.authService.getUser().subscribe(user => {
-        this.isUserLoggedIn = user !== null;
+        this.isUserLoggedIn = !!user;
+        this.loadRoutes(user);
       })
     );
+  }
+
+  private loadRoutes(user: User | null) {
     this.subscriptions.push(
-      this.pageService.getPageRoutes().subscribe(routes => {
-        this.pageRoutes = routes;
-        this.pageRoutes.push("login"); // Add static pages if needed
+      this.pageService.getPageRoutes(user).subscribe(routes => {
+        this.pageRoutes = [...routes, 'login'];
         console.log(this.pageRoutes);
       })
     );
