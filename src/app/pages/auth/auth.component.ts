@@ -3,14 +3,39 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { CommonModule } from '@angular/common';
 import { User, UserRole } from './auth.models';
+import { InputTextModel } from '../../page-components/inputs/input-models';
+import { InputTextComponent } from "../../page-components/inputs/text/text.component";
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css'],
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, InputTextComponent],
 })
 export class AuthComponent implements OnInit {
+  userNameInput: InputTextModel = {
+    type: 'number',
+    label: 'number',
+    name: '',
+    value: ''
+  }
+
+  fields: InputTextModel[] =
+    [
+      {
+        type: 'text',
+        label: 'Username',
+        name: 'username',
+        value: '',
+        required: true,
+      }, {
+        type: 'password',
+        label: 'Password',
+        name: 'password',
+        value: '',
+        required: true,
+      }
+    ]
   username = '';
   password = '';
   errorMessage = '';

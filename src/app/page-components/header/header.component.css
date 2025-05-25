@@ -112,18 +112,6 @@
   }
 }
 
-
-
-.header-green {
-  background-color: green;
-  color: white;
-}
-
-.header-blue {
-  background-color: blue;
-  color: white;
-}
-
 .header-nav ul.nav-list {
   display: flex;
   gap: 80px;
@@ -138,5 +126,5 @@
 
 .header-nav ul.nav-list li a:hover {
   text-decoration: underline;
-  color: var(--tertiary-color);
+  color: var(--primary-color);
 }
