@@ -1,5 +1,9 @@
-<div class="input-group">
-    <label [for]="inputModel.name">{{ inputModel.label }}</label>
-    <input [type]="inputModel.type" [name]="inputModel.name" [id]="inputModel.name" [disabled]="inputModel.disabled"
-        [required]="inputModel.required" [value]="inputModel.value" class="input" />
-</div>
+<input-label [inputModel]="inputModel" [isRequired]="required">
+    <input [type]="inputModel.type" [name]="inputModel.name" [id]="inputModel.name"
+        [disabled]="inputModel.disabled ?? false" [required]="required" [(ngModel)]="inputModel.value"
+        (ngModelChange)="validateInput()" class="input" />
+
+    <div *ngIf="!inputModel.valid && errorMessage!=''" class="error-message">
+        {{ errorMessage }}
+    </div>
+</input-label>

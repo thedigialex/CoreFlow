@@ -3,8 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { CommonModule } from '@angular/common';
 import { User, UserRole } from './auth.models';
-import { InputTextModel } from '../../page-components/inputs/input-models';
-import { InputTextComponent } from "../../page-components/inputs/text/text.component";
+import { InputTextComponent, InputTextModel } from "../../page-components/inputs/text/text.component";
 
 @Component({
   selector: 'app-auth',
@@ -13,27 +12,21 @@ import { InputTextComponent } from "../../page-components/inputs/text/text.compo
   imports: [FormsModule, CommonModule, InputTextComponent],
 })
 export class AuthComponent implements OnInit {
-  userNameInput: InputTextModel = {
-    type: 'number',
-    label: 'number',
-    name: '',
-    value: ''
-  }
-
   fields: InputTextModel[] =
     [
       {
         type: 'text',
-        label: 'Username',
         name: 'username',
         value: '',
-        required: true,
+        stacked: true,
+        valid: false,
+        rules: ['Email']
       }, {
         type: 'password',
-        label: 'Password',
         name: 'password',
         value: '',
-        required: true,
+        valid: false,
+        rules: []
       }
     ]
   username = '';

@@ -12,6 +12,7 @@
   --text-color: #212529;
   --background-color: #f8f9fa;
   --link-color: #f8f9fa;
+  --danger-color: #b43c3c;
 }
 
 /* Change the highlight color for selected text */
@@ -56,6 +57,7 @@ p {
   border: none;
   cursor: pointer;
 }
+
 .primary-button:hover {
   filter: brightness(85%);
   transform: scale(1.05);

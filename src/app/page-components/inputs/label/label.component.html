@@ -1,0 +1,4 @@
+<div class="input-group" [ngClass]="{ 'column': stacked}">
+    <label [for]="label">{{ label }} <span *ngIf="isRequired" class="required">*</span></label>
+    <ng-content></ng-content>
+</div>
