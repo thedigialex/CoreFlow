@@ -1,12 +1,118 @@
-/* Sticky Header */
 .header {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 100px;
-  z-index: 10; 
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
 }
-/* Sticky Header */
+
+.header-logo {
+  width: 96px;
+}
+
+.top-header-section,
+.middle-header-section,
+.bottom-header-section {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 20px;
+}
+.top-header-section {
+  padding: 16px 32px;
+  background-color: var(--primary-color);
+}
+.middle-header-section {
+  padding: 0px 32px;
+  background-color: var(--secondary-color);
+}
+.bottom-header-section {
+  background-color: var(--tertiary-color);
+}
+@media (max-width: 768px) {
+  .top-header-section,
+  .middle-header-section,
+  .bottom-header-section {
+    gap: 10px;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+  }
+  .middle-header-section {
+    padding: 8px 16px;
+  }
+}
+
+.nav-and-button {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.logo-and-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; 
+}
+
+
+
+
+
+.toggle-button {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+}
+
+.nav-and-button {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .toggle-button {
+    display: block;
+  }
+
+  .nav-and-button {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--secondary-color);
+    padding: 10px 0;
+  }
+
+  .nav-and-button.open {
+    display: flex;
+  }
+
+  .header-nav ul.nav-list {
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 0;
+  }
+
+  .header-nav ul.nav-list li a {
+    font-size: 1.25rem;
+    padding: 10px 20px;
+    display: block;
+  }
+
+  .primary-button {
+    width: 90%;
+    margin: 10px auto 0;
+    display: block;
+  }
+}
+
+
 
 .header-green {
   background-color: green;
@@ -16,4 +122,21 @@
 .header-blue {
   background-color: blue;
   color: white;
+}
+
+.header-nav ul.nav-list {
+  display: flex;
+  gap: 80px;
+  list-style: none;
+}
+
+.header-nav ul.nav-list li a {
+  color: var(--link-color);
+  font-size: 1.15rem;
+  text-decoration: none;
+}
+
+.header-nav ul.nav-list li a:hover {
+  text-decoration: underline;
+  color: var(--tertiary-color);
 }

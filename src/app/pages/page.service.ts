@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { Page } from '../page-components/body/body.modals';
 import { Observable, of } from 'rxjs';
 import { User, UserRole } from './auth/auth.models';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class PageService {
+    constructor(private router: Router) { }
     pages: Page[] = [
         {
             name: 'Home',
@@ -71,7 +73,7 @@ export class PageService {
                     ],
                 },
             ],
-        }, 
+        },
         {
             name: 'Editior',
             route: 'editsomething',
@@ -126,7 +128,11 @@ export class PageService {
         return of(this.pages.find(page => page.route === route));
     }
 
-    addPage(page: Page): void {
+    addPage(page: Page) {
         this.pages.push(page);
+    }
+
+    changePage(route: string) {
+        this.router.navigate([route]);
     }
 }

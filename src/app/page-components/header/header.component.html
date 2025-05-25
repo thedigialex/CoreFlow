@@ -1,12 +1,28 @@
-<header class="header" [ngClass]="{ 'header-green': !isUserLoggedIn, 'header-blue': isUserLoggedIn }">
-  <h1>Header Section</h1>
-  <nav>
+<div class="header" [ngClass]="{ 'header-green': !isUserLoggedIn, 'header-blue': isUserLoggedIn }">
+  <div class="top-header-section"></div>
+  <div class="middle-header-section">
+    <div class="logo-and-toggle">
+      <a routerLink="/">
+        <img src="assets/images/logo.png" alt="Logo" class="header-logo" />
+      </a>
+      <button class="toggle-button" (click)="toggleMenu()">
+        ☰
+      </button>
+    </div>
 
-    <ul>
-      <li *ngFor="let route of pageRoutes">
-        <a [routerLink]="[route]">{{ route | titlecase }}</a> 
-      </li>
-    </ul>
-  </nav>
-  
-</header>
+    <div class="nav-and-button" [class.open]="menuOpen">
+      <nav class="header-nav">
+        <ul class="nav-list">
+          <li *ngFor="let route of pageRoutes">
+            <a [routerLink]="route" (click)="closeMenu()">{{ route | titlecase }}</a>
+          </li>
+        </ul>
+      </nav>
+      <button class="primary-button" (click)="headerButtonClicked()">
+        {{ isUserLoggedIn ? 'Community' : 'Login' }}
+      </button>
+    </div>
+
+  </div>
+  <div class="bottom-header-section"></div>
+</div>

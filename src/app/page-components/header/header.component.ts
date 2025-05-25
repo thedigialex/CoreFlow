@@ -20,7 +20,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(private authService: AuthService, private pageService: PageService) { }
 
-
   ngOnInit() {
     this.subscriptions.push(
       this.authService.getUser().subscribe(user => {
@@ -33,14 +32,32 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private loadRoutes(user: User | null) {
     this.subscriptions.push(
       this.pageService.getPageRoutes(user).subscribe(routes => {
-        this.pageRoutes = [...routes, 'login'];
+        this.pageRoutes = [...routes];
         console.log(this.pageRoutes);
       })
     );
   }
 
-
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
+
+  headerButtonClicked() {
+    if (this.isUserLoggedIn) {
+      this.pageService.changePage('/community');
+    } else {
+      this.pageService.changePage('/login');
+    }
+  }
+
+  menuOpen = false;
+
+toggleMenu() {
+  this.menuOpen = !this.menuOpen;
+}
+
+closeMenu() {
+  this.menuOpen = false;
+}
+
 }
