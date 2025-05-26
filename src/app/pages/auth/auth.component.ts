@@ -28,13 +28,23 @@ export class AuthComponent implements OnInit {
     rules: ['Not Empty'],
     onValidChange: this.inputChanged.bind(this)
   }]
-  button: ButtonModel = {
+
+  loginButton: ButtonModel = {
     label: 'Login',
     enabled: false,
     isLoading: false,
     successful: false,
     response: '',
     onClick: () => this.onLogin()
+  };
+
+  logoutButton: ButtonModel = {
+    label: 'Logout',
+    enabled: true,
+    isLoading: false,
+    successful: false,
+    response: '',
+    onClick: () => this.onLogout()
   };
 
   isUserLoggedIn = false;
@@ -50,21 +60,20 @@ export class AuthComponent implements OnInit {
   }
 
   onLogin() {
-    this.button.isLoading = true;
     setTimeout(() => {
-      this.button.isLoading = false;
-      this.button.response = { status: 200, message: 'Success!' };
-      this.button.successful = true;
+      this.loginButton.isLoading = false;
+      this.loginButton.response = 'Successes';
+      this.loginButton.successful = true;
       const fakeUserData = this.generateFakeUserData();
       sessionStorage.setItem('user', JSON.stringify(fakeUserData));
       this.authService.setUser(fakeUserData);
-
       console.log('Login successful', fakeUserData);
+      this.logoutButton.enabled = true;
     }, 2000);
   }
 
   inputChanged() {
-    this.button.enabled = this.fields.every(field => field.valid);
+    this.loginButton.enabled = this.fields.every(field => field.valid);
   }
 
 
@@ -84,6 +93,15 @@ export class AuthComponent implements OnInit {
   }
 
   onLogout() {
-    this.authService.clearUser();
+    setTimeout(() => {
+      this.logoutButton.isLoading = false;
+      this.logoutButton.response = 'Successes';
+      this.logoutButton.successful = true;
+      this.logoutButton.enabled = false;
+      this.authService.clearUser();
+
+      this.loginButton.response = '';
+      this.loginButton.successful = false;
+    }, 2000);
   }
 }

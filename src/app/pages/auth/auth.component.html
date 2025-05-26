@@ -2,6 +2,6 @@
   <h2>Login</h2>
   <input-text [inputModel]="fields[0]" />
   <input-text [inputModel]="fields[1]" />
-  <input-button *ngIf="!isUserLoggedIn"  [model]="button"></input-button>
-  <button *ngIf="isUserLoggedIn" (click)="onLogout()">Logout</button>
+  <input-button *ngIf="!isUserLoggedIn" [model]="loginButton"></input-button>
+  <input-button *ngIf="isUserLoggedIn" [model]="logoutButton"></input-button>
 </div>

@@ -2,14 +2,14 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export interface ButtonModel {
-    label: string;
-    enabled: boolean;
-    isLoading: boolean;
-    successful: boolean;
-    response: any;
-    onClick: () => void;
+  label: string;
+  enabled: boolean;
+  isLoading: boolean;
+  successful?: boolean; 
+  error?: boolean;
+  response?: string;
+  onClick: () => void;
 }
-
 @Component({
     selector: 'input-button',
     imports: [CommonModule],
@@ -22,6 +22,7 @@ export class InputButtonComponent {
 
     handleClick() {
         if (this.model.enabled && !this.model.isLoading) {
+            this.model.isLoading = true;
             this.model.onClick?.();
         }
     }
