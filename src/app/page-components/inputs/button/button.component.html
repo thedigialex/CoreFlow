@@ -1,0 +1,14 @@
+<!-- button.component.html -->
+<button [disabled]="!model.enabled || model.isLoading" (click)="handleClick()" class="btn">
+    <ng-container *ngIf="!model.isLoading && !model.successful">
+        {{ model.label }}
+    </ng-container>
+
+    <ng-container *ngIf="model.isLoading">
+        <span class="spinner"></span> Loading...
+    </ng-container>
+
+    <ng-container *ngIf="model.successful">
+        Success
+    </ng-container>
+</button>

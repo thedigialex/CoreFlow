@@ -1,15 +1,7 @@
 <div class="body">
   <h2>Login</h2>
-
-  <!-- Form with ngSubmit -->
-  <form (ngSubmit)="onLogin()">
-    <input-text [inputModel]="fields[0]" />
-    <input-text [inputModel]="fields[1]" />
-    <button type="submit">
-      Login
-    </button>
-  </form>
-
-  <!-- Logout Button (only visible if user is logged in) -->
+  <input-text [inputModel]="fields[0]" />
+  <input-text [inputModel]="fields[1]" />
+  <input-button *ngIf="!isUserLoggedIn"  [model]="button"></input-button>
   <button *ngIf="isUserLoggedIn" (click)="onLogout()">Logout</button>
 </div>

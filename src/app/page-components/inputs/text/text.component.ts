@@ -11,6 +11,7 @@ export interface InputTextModel {
     stacked?: boolean;
     valid: boolean;
     rules: string[];
+    onValidChange: (valid: boolean) => void;
 }
 
 @Component({
@@ -21,10 +22,10 @@ export interface InputTextModel {
 })
 export class InputTextComponent implements OnInit {
     @Input() inputModel!: InputTextModel;
-    @Output() valueChangedAndValid = new EventEmitter<{ valid: boolean }>();
 
     required: boolean = false;
     errorMessage: string = '';
+
     ngOnInit() {
         if (this.inputModel.rules.length > 0) {
             this.required = true;
@@ -62,14 +63,7 @@ export class InputTextComponent implements OnInit {
         }
 
         this.inputModel.valid = isValid;
-        if (this.inputModel.valid) {
-            this.errorMessage = '';
-            this.valueChangedAndValid.emit({
-                valid: this.inputModel.valid
-            });
-        }
-        else {
-            this.errorMessage = errorMessage;
-        }
+        this.errorMessage = errorMessage;
+        this.inputModel.onValidChange(this.inputModel.valid);
     }
 }
