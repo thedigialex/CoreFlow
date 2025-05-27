@@ -4,12 +4,13 @@ import { AuthService } from './auth.service';
 import { CommonModule } from '@angular/common';
 import { User, UserRole } from './auth.models';
 import { InputTextComponent, InputTextModel, InputButtonComponent, ButtonModel } from '../../page-components/inputs';
+import { CardComponent } from "../../page-components/container/card/card.component";
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css'],
-  imports: [FormsModule, CommonModule, InputTextComponent, InputButtonComponent],
+  imports: [FormsModule, CommonModule, InputTextComponent, InputButtonComponent, CardComponent, CardComponent],
 })
 export class AuthComponent implements OnInit {
   fields: InputTextModel[] = [{
